@@ -19,7 +19,7 @@ export default class AddTrailer extends Component {
       submitted: false,
       file: null,
       url: "",
-      uploadProgress: 0 // estado para mostrar progreso de subida
+      uploadProgress: 0
     };
   }
 
@@ -36,7 +36,6 @@ export default class AddTrailer extends Component {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        // actualizar el estado con el progreso
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
@@ -54,7 +53,6 @@ export default class AddTrailer extends Component {
             this.setState({
               url: myurl
             }, () => {
-              // si la URL se ha actualizado, guardar en la base de datos
               if (this.state.url !== "") {
                 this.saveTrailer();
               }
@@ -66,25 +64,25 @@ export default class AddTrailer extends Component {
 
   saveTrailer() {
     this.setState({
-      loading: true, // establecer loading en verdadero al iniciar la carga
-      message: "" // borrar cualquier mensaje previo
+      loading: true,
+      message: ""
     });
 
     let data = {
       title: this.state.title,
       description: this.state.description,
       published: false,
-      url: this.state.url // asignar la URL al objeto 'data'
+      url: this.state.url
     };
 
     TrailerDataService.create(data)
       .then(() => {
         console.log("Created new item successfully!");
         this.setState({
-          loading: false, // establecer loading en falso al completar la carga
+          loading: false,
           submitted: true,
           message: "The clip was uploaded successfully.",
-          progress: 0 // restablecer la barra de progreso
+          progress: 0
         });
       })
       .catch((e) => {
