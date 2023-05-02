@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import './index.css';
+import { Routes, Route, Link } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+import AddTrailer from "./components/add-trailer.component.js";
+import TrailersList from "./components/trailers-list.component.js";
+import Videos from "./components/video.component";
+import Perfil from "./Perfil";
+
+
+class App extends Component {
+  render() {
+    return (
+      <div class="center">
+        <nav className="navbar navbar-expand navbar-dark bg-dark justify-content-center">
+          <a href="/perfil" className="navbar-brand">
+            Itzel Rios
+          </a>
+          <div className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to={"/trailers"} className="nav-link">
+                Trailers
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/add"} className="nav-link">
+                Add
+              </Link>
+            </li>
+          </div>
+        </nav>
+
+        <div className="center w85">
+          <h2 className="justify-content-center">Proyecto de Trailers de peliculas   </h2>
+          <div className="ph3 pv1 background-gray">
+
+            <Routes>
+              <Route exact path="/trailers" element={<TrailersList />} />
+              <Route exact path="add" element={<AddTrailer />} />
+              <Route exact path="/video" element={<Videos />} />
+              <Route exact path="/perfil" element={<Perfil />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+
+    );
+  }
 }
 
 export default App;
