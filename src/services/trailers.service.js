@@ -20,4 +20,6 @@ class TrailerDataService {
   }
 }
 
-export default new TrailerDataService();
+const starsDataService = new TrailerDataService();
+
+export default starsDataService;
