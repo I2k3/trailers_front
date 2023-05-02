@@ -12,7 +12,6 @@ export default class ReactionsLike extends Component {
             <option className="styleofSad" value="sad" >😭 Me entristece</option>
             <option className="styleofAngry" value="angry" >😡 Me enoja</option>
             </select>
-            //<button className="styleofButtom" onClick={()=><h1>hola</h1>}>Like</button>
         )
     }
 }
