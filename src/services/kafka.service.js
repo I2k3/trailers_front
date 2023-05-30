@@ -19,6 +19,6 @@ class KafkaService {
     }
   
   }
-  
-  export default new KafkaService();
+  KafkaService= new KafkaService();
+  export default KafkaService;
   

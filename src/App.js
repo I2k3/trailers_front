@@ -4,10 +4,6 @@ import "./App.css";
 import './index.css';
 import { Routes, Route, Link } from "react-router-dom";
 
-
-
-
-import AddTrailer from "./components/add-trailer.component.js";
 import TrailersList from "./components/trailers-list.component.js";
 import Videos from "./components/video.component";
 import Perfil from "./Perfil";
