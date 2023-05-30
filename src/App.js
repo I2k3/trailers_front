@@ -6,14 +6,21 @@ import { Routes, Route, Link } from "react-router-dom";
 
 
 
+
 import AddTrailer from "./components/add-trailer.component.js";
 import TrailersList from "./components/trailers-list.component.js";
 import Videos from "./components/video.component";
 import Perfil from "./Perfil";
+import Login from "./Google-Login/Login";
 
 
 class App extends Component {
   render() {
+    const user = localStorage.getItem('user');
+    const logout = () => {
+      localStorage.clear()
+      window.location.reload()
+    }
     return (
       <div class="center">
         <nav className="navbar navbar-expand navbar-dark bg-dark justify-content-center">
@@ -31,6 +38,12 @@ class App extends Component {
                 Add
               </Link>
             </li>
+            <li className="nav-link">
+              {user &&
+                <li>
+                  <Link onClick={logout} to={"/home"}>Cerrar Sesion</Link>
+                </li>
+              }</li>
           </div>
         </nav>
 
@@ -40,9 +53,10 @@ class App extends Component {
 
             <Routes>
               <Route exact path="/trailers" element={<TrailersList />} />
-              <Route exact path="add" element={<AddTrailer />} />
+              <Route exact path="add" element={<Login />} />
               <Route exact path="/video" element={<Videos />} />
               <Route exact path="/perfil" element={<Perfil />} />
+
             </Routes>
           </div>
         </div>

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import TrailerDataService from "../services/trailers.service";
 import ReactionsLike from "./reactions.component";
 import Coments from "./comentarios.component";
+import { Routes, Route, Link } from "react-router-dom";
+
 
 
 export default class Trailer extends Component {
@@ -114,7 +116,7 @@ export default class Trailer extends Component {
 
     render() {
         const { currentTrailers } = this.state;
-
+        const user = localStorage.getItem('user');
         return (
             <div>
                 <h4>Trailer</h4>
@@ -145,8 +147,21 @@ export default class Trailer extends Component {
                                     onChange={this.onChangeDescription}
                                 />
                             </div>
-                            < ReactionsLike />
-                            < Coments />
+                            {user ?
+                                <>
+                                    <ReactionsLike
+                                    />
+                                    <Coments />
+                                </>
+                                :
+                                <div className="section">
+                                    <h5>Inicia sesion para poder comentar y reaccionar</h5>
+                                    <Link class="google-login-button" to={"/add"}>
+                                        <span class="icon"></span>
+                                        Iniciar sesión con Google
+                                    </Link>
+                                </div>
+                            }
 
                             <div className="form-group">
                                 <label>

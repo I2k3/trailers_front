@@ -1,0 +1,64 @@
+.container {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-family: 'Kulim Park', sans-serif;
+    margin: 0 auto;
+    max-width: 900px;
+    flex-direction: column;
+    /* Agregamos esto para alinear verticalmente */
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.g {
+    text-align: center;
+    font-size: 50px;
+    margin: 0;
+    text-shadow: 3px 3px 0px #000000;
+}
+
+.google-login-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 16px;
+    background-color: #ffffff;
+    color: #757575;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.google-login-button:hover {
+    background-color: #f1f1f1;
+}
+
+.google-login-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #4285f4;
+}
+
+.google-login-button .icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url('https://storage.googleapis.com/support-kms-prod/ZAl1gIwyUsvfwxoW9ns47iJFioHXODBbIkrK');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 8px;
+}
