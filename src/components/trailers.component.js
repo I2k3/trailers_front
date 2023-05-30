@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TrailerDataService from "../services/trailers.service";
 import ReactionsLike from "./reactions.component";
 import Coments from "./comentarios.component";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 

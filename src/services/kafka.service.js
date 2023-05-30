@@ -1,7 +1,6 @@
 
 class KafkaService {
     url = 'https://itzelrios-service-i2k3.cloud.okteto.net/';
-    //url = 'http://localhost:8080/';
    
     reaction = async (name) => {
      await fetch(this.url + 'like?name=' + name, {

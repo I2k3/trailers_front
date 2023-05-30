@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, getAuth } from "firebase/auth";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/storage"
