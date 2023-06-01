@@ -1,0 +1,119 @@
+.clip-container {
+    position: fixed;
+    top:70px;
+    right: 0;
+    width: 40%;
+    /* el ancho restante */
+    height: 100vh;
+    /* altura del 100% del viewport */
+    /* para evitar que se desborde en el eje Y */
+    overflow: hidden;
+  }
+  
+  .clip {
+    width: 100%;
+    /* para ajustar el ancho de la clase clip al 100% del contenedor */
+    height: 100%;
+    /* para ajustar la altura de la clase clip al 100% del contenedor */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* color de fondo para asegurar que no se superponga a otros elementos */
+    box-sizing: border-box;
+    /* para incluir el padding y el borde dentro del ancho y la altura */
+    padding: 10px;
+  }
+  
+  .video-container {
+    width: 100%;
+    /* para ajustar el ancho del contenedor de video al 100% del componente */
+    height: 70%;
+    /* para ajustar la altura del contenedor de video al 70% del componente */
+    position: relative;
+    /* para poder posicionar el video de forma absoluta */
+  }
+  
+  .video-container video {
+    position: absolute;
+    /* para posicionar el video de forma absoluta */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* para ajustar el ancho del video al 100% del contenedor */
+    height: 100%;
+    /* para ajustar la altura del video al 100% del contenedor */
+    object-fit: cover;
+    /* para cubrir el contenedor de video sin deformar la imagen */
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+  }
+  
+  .comment-section {
+    width: 100%;
+    float: left;
+    margin-right: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-height: 500px; /* ajusta el valor según tus necesidades */
+    overflow: auto;
+  }
+  
+  .comments-section {
+    max-height: 200px; /* establecer la altura máxima */
+    overflow-y: auto; /* permitir el desplazamiento hacia abajo */
+  }
+  
+  .comments-section h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .comment-form {
+    margin-top: 10px;
+  }
+  
+  .comment-form textarea {
+    width: calc(100% - 22px); /* 22px es la suma de los paddings (10px) + los bordes (1px x 2) */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+  
+  .comment-form button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .comments-list {
+    margin-top: 10px;
+  }
+  
+  .comment {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .comment h5 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .comment p {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+  
+  
+  

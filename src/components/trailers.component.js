@@ -150,8 +150,10 @@ export default class Trailer extends Component {
                             {user ?
                                 <>
                                     <ReactionsLike
+                                    id = {currentTrailers.id}
                                     />
-                                    <Coments />
+                                    <Coments
+                                    id = {currentTrailers.id} />
                                 </>
                                 :
                                 <div className="section">
