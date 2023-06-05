@@ -1,29 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "../clip.css";
 import KafkaService from "../services/kafka.service";
 import axios from 'axios';
 
-const Coments = ({ id }) => {
+const Comentarios = ({ id }) => {
   const [comentarios, setComentarios] = useState([]);
   const [commentText, setCommentText] = useState([]);
-  const uri = "https://apimongo-service-kafka-i2k3.cloud.okteto.net/api/comments"
+  const uri = "https://apimongo-service-kafka-i2k3.cloud.okteto.net/api/comments";
 
-  useEffect(() => {
-    fetchComments();
-  }, []);
-
-  const fetchComments = async (r) => {
+  const fetchComments = useCallback(async () => {
     try {
       const response = await axios.get(`${uri}/${id}`);
       const comentarios = response.data ? response.data : [];
-
       setComentarios(comentarios);
     } catch (error) {
       console.log('Error al obtener los comentarios:', error);
     }
-  };
+  }, [id]);
 
-  const comment = (e, status) => {
+  useEffect(() => {
+    fetchComments();
+  }, [fetchComments]);
+
+  const comment = (e) => {
     const user = localStorage.getItem('user');
     const data = {
       userId: user,
@@ -65,6 +64,4 @@ const Coments = ({ id }) => {
   );
 };
 
-export default Coments;
-
-
+export default Comentarios;
