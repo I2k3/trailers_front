@@ -13,34 +13,34 @@ const ReactionsLike = ({ id }) => {
   const uri = "https://apimongo-service-kafka-i2k3.cloud.okteto.net/api/reactions"
 
   useEffect(() => {
+    const fetchReactions = async () => {
+      try {
+        const responseLike = await axios.get(`${uri}/${id}/like`);
+        const likeCount = responseLike.data ? responseLike.data.n : 0;
+        const responseLove = await axios.get(`${uri}/${id}/love`);
+        const loveCount = responseLove.data ? responseLove.data.n : 0;
+        const responseAngry = await axios.get(`${uri}/${id}/angry`);
+        const angryCount = responseAngry.data ? responseAngry.data.n : 0;
+        const responseWow = await axios.get(`${uri}/${id}/wow`);
+        const wowCount = responseWow.data ? responseWow.data.n : 0;
+        const responseHaha = await axios.get(`${uri}/${id}/haha`);
+        const hahaCount = responseHaha.data ? responseHaha.data.n : 0;
+        const responseSad = await axios.get(`${uri}/${id}/sad`);
+        const sadCount = responseSad.data ? responseSad.data.n : 0;
+
+        setLikeCount(likeCount);
+        setLoveCount(loveCount);
+        setAngryCount(angryCount);
+        setWowCount(wowCount);
+        setHahaCount(hahaCount);
+        setSadCount(sadCount);
+      } catch (error) {
+        console.log('Error al obtener las reacciones:', error);
+      }
+    };
+
     fetchReactions();
-  }, []);
-
-  const fetchReactions = async (r) => {
-    try {
-      const responseLike = await axios.get(`${uri}/${id}/like`);
-      const likeCount = responseLike.data ? responseLike.data.n : 0;
-      const responseLove = await axios.get(`${uri}/${id}/love`);
-      const loveCount = responseLove.data ? responseLove.data.n : 0;
-      const responseAngry = await axios.get(`${uri}/${id}/angry`);
-      const angryCount = responseAngry.data ? responseAngry.data.n : 0;
-      const responseWow = await axios.get(`${uri}/${id}/wow`);
-      const wowCount = responseWow.data ? responseWow.data.n : 0;
-      const responseHaha = await axios.get(`${uri}/${id}/haha`);
-      const hahaCount = responseHaha.data ? responseHaha.data.n : 0;
-      const responseSad = await axios.get(`${uri}/${id}/sad`);
-      const sadCount = responseSad.data ? responseSad.data.n : 0;
-
-      setLikeCount(likeCount);
-      setLoveCount(loveCount);
-      setAngryCount(angryCount);
-      setWowCount(wowCount);
-      setHahaCount(hahaCount);
-      setSadCount(sadCount);
-    } catch (error) {
-      console.log('Error al obtener las reacciones:', error);
-    }
-  };
+  }, [id, setLikeCount, setLoveCount, setAngryCount, setWowCount, setHahaCount, setSadCount]);
 
   const reaction = (e, status) => {
     const user = localStorage.getItem('user');
@@ -56,14 +56,11 @@ const ReactionsLike = ({ id }) => {
   };
 
   return (
-
     <div className="reactions">
-
       <div className="reaction reaction-like" onClick={(e) => {
         e.preventDefault();
         reaction(e, "like");
-      }}
-      >
+      }}>
         <tool-tip></tool-tip>
         <p>{likeCount}</p>
       </div>
@@ -74,7 +71,7 @@ const ReactionsLike = ({ id }) => {
       }}>
         <tool-tip></tool-tip>
         <p>{loveCount}</p>
-        </div>
+      </div>
 
       <div className="reaction reaction-haha" onClick={(e) => {
         e.preventDefault();
@@ -90,7 +87,6 @@ const ReactionsLike = ({ id }) => {
       }}>
         <tool-tip></tool-tip>
         <p>{WowCount}</p>
-
       </div>
 
       <div className="reaction reaction-sad" onClick={(e) => {
@@ -99,7 +95,6 @@ const ReactionsLike = ({ id }) => {
       }}>
         <tool-tip></tool-tip>
         <p>{SadCount}</p>
-
       </div>
 
       <div className="reaction reaction-angry" onClick={(e) => {
@@ -108,9 +103,7 @@ const ReactionsLike = ({ id }) => {
       }}>
         <tool-tip></tool-tip>
         <p>{AngryCount}</p>
-
       </div>
-
     </div>
   );
 };
